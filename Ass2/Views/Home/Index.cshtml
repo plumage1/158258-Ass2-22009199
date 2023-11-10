@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .box {
+        width: 100%;
+        height:800px;
+    }
+    .box1 {
+        width: 30%;
+        height: 200px;
+        margin-left: auto;
+        margin-top: 100px;
+        font-family: Transformers;
+        float: right;
+    }
+    .box2{
+        width:70%;
+        height:50px;
+        margin-top:70px;
+    }
+    #playButton {
+        width: 1200px;
+        height: 50px;
+        background: url("~Content/Images/R-C.jpg") no-repeat;
+        border-style: none;
+        color: red;
+        position: absolute;
+        left: 1250px;
+        top: 100px;
+        font-size:45px;
+        font-family:'Cyberdyne Halftone', sans-serif;
+    }
+    .destiny {
+        position: absolute;
+        left: 10px;
+        top: 300px;
+    }
+    .images {
+        width: 100px;
+        margin: 50px;
+        filter: brightness(10%)
+    }
+    h1 {
+        margin-left: 200px;
+        color: #FFA500;
+        font-family: Transformers;
+    }
+    a {
+        color: #FF1493;
+    }
+</style>
+<main class="box">
+    <div class="box1">
+
+        <h1 style="margin-left:100px;">Introduce</h1>
+        <p style="font-size: 25px;">
+            "Honkai: Star Dome Railway" is a galaxy adventure strategy game developed by Shanghai miHoYo Network Technology Co., Ltd., and is the fifth work of miHoYo's "Honkai" series. In the game, players will board the Star Dome Train, visit the world of Vientiane that inhabits the universe, and join hands with various travel companions to rescue the various crises caused by the "Star Core" and fight against the "Star God's" intention to trample on civilization.
+        </p>
+
+    </div>
+    <div class="box2">
+        <img src="~/Content/Images/kafuka.gif" style="width:200px" />
+        <img src="~/Content/Images/k2.gif" style="width:200px" />
+        <img src="~/Content/Images/hack.gif" style="width:200px" />
+        <img src="~/Content/Images/ren.gif" style="width:200px" />
+        <h1>All kinds of Destiny</h1>
+        <a href="https://localhost:44345/Characters?destiny=Memory" target="_blank">
+            <img src="~/Content/Images/jiyi.png" alt="Pulpit rock" class="images" width="100" height="100">
+        </a>
+        <a href="https://localhost:44345/Characters?Destiny=Conservation" target="_blank">
+            <img src="~/Content/Images/cunhu.png" alt="Pulpit rock" class="images" width="100" height="100">
+        </a>
+        <a href="https://localhost:44345/Characters?Destiny=Abundant" target="_blank">
+            <img src="~/Content/Images/fengrao.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+
+        <a href="https://localhost:44345/Characters?Destiny=Destruction" target="_blank">
+            <img src="~/Content/Images/huimie.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+        <br />
+        <a href="https://localhost:44345/Characters?Destiny=Harmony" target="_blank">
+            <img src="~/Content/Images/tongxie.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+        <a href="https://localhost:44345/Characters?Destiny=Hunting" target="_blank">
+            <img src="~/Content/Images/xunlie.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+        <a href="https://localhost:44345/Characters?Destiny=Nothingness" target="_blank">
+            <img src="~/Content/Images/xuwu.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+        <a href="https://localhost:44345/Characters?Destiny=Wisdom" target="_blank">
+            <img src="~/Content/Images/zhishi.png" alt="Pulpit rock" width="100" class="images" height="100">
+        </a>
+    </div>
+    <div>
+        <input id="playButton" type="button" value="EXPLIOT"/>
+        <audio id="bgMusic" loop>
+            <source src="~/Content/Musics/music1.mp3" type="audio/mpeg">
+        </audio>
+
+        <script>
+            const playButton = document.getElementById("playButton");
+            const bgMusic = document.getElementById("bgMusic");
+
+            playButton.addEventListener("click", function () {
+                bgMusic.play();
+            });
+
+        </script>
+    </div>
+
+</main>

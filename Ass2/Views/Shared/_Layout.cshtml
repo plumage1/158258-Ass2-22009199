@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+       * {
+	margin: 0px;
+	padding: 0px;
+}
+
+video {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	min-width: 100%;
+	min-height: 100%;
+	height: auto;
+	width: auto;
+	/*加滤镜*/
+	/*filter: blur(15px); //背景模糊设置 */
+	/*-webkit-filter: grayscale(100%);*/
+	/*filter:grayscale(100%); //背景灰度设置*/
+	z-index: -11
+}
+
+source {
+	min-width: 100%;
+	min-height: 100%;
+	height: auto;
+	width: auto;
+}
+
+p {
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+	color: white;
+}
+</style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Honkai: Star Rail", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("News", "Index", "News", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Linkage", "Index", "Carousel", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Destiny", "Index", "Destinies", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Character", "Index", "Characters", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @using (Html.BeginForm("Index", "Characters", FormMethod.Get, new
+                {
+                    @class ="navbar-form navbar-left"
+                }))
+            {
+                <div>
+                    <div class="form-group">
+                        @Html.TextBox("Search", null, new
+                        {
+                            @class = "form-control",
+                            @placeholder =
+                        "Search Characters"
+                        })
+                    </div>
+                </div>
+            }
+                </div>
+        </div>
+    </nav>
+    <video style=" z-index: -1;" id="v1" autoplay loop muted>
+        <source src="~/Content/Video/video2.mp4" type="video/mp4" />
+    </video>
+    <video autoplay loop muted>
+        <source src="./video2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+    <div style="color:antiquewhite;" class="container body-content content">
+        @RenderBody()
+        <footer style="position:absolute; bottom:0; ">
+            <address>
+                Written by <a href="mailto:22009199@massey.ac.nz">Junyu Yi</a>.<br>
+                Visit us at: Massey.ac.nz<br>
+                New Zealand<br>
+            </address>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

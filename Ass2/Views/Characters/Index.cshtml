@@ -1,0 +1,75 @@
+﻿@model Ass2.ViewModels.CharacterIndexViewModel
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Characters";
+}
+<style>
+
+    .table {
+        color:red;
+        text-decoration: none;
+
+    }
+    a {
+        color: #FF1493;
+    }
+</style>
+<h2>Characters</h2>
+<main>
+    <p>
+        @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all" : "You search for " +Model.Search + " found")
+        @Model.Characters.TotalItemCount characters
+        @using (Html.BeginForm("Index", "Characters", FormMethod.Get))
+        {
+            <label>Filter by destiny:</label>
+            @Html.DropDownListFor(vm => vm.Destiny, Model.DesFilterItems, "All");
+            <input type="submit" value="Filter" />
+            <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Destiny)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Characters.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Characters.First().Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Characters)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destiny.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        Page @(Model.Characters.PageCount < Model.Characters.PageNumber ? 0 :
+Model.Characters.PageNumber) of @Model.Characters.PageCount
+@Html.PagedListPager(Model.Characters, page => Url.Action("Index", new
+{
+destiny = @Model.Destiny,
+Search = @Model.Search,
+page
+}))
+</div>
+
+</main>
